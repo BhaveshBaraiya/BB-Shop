@@ -16,6 +16,26 @@ a.active hr {
   font-style: normal;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
+.btn {
+  background-color: #000;
+  border: 1px solid transparent;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 500;
+  padding: 12px 32px;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background-color: transparent;
+    border-color: #000;
+    color: #000;
+  }
+}
+
 @media(Max-width:640px) {
  header a.active {
     background-color: #000;
