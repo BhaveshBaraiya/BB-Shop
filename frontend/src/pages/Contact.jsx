@@ -5,13 +5,14 @@ import NewsLetter from '../components/NewsLetter'
 
 function Contact() {
   return (
-    <div>
-        <div className="text-center text-2xl pt-10 border-t">
+    <div className='mt-40'>
+        <div className="text-center text-2xl pt-10 border-t" data-aos="fade-down"
+        data-aos-duration="800">
           <Title text1={'CONTACT'} text2={'US'}/>
         </div>
         <div className="my-10 flex flex-col justify-center md:flex-row gap-10 mb-28">
-          <img src={assets.contact_img} alt="Contact Image" className='w-full max-w-[480px]' />
-          <div className="flex flex-col justify-center items-start gap-6">
+          <img src={assets.contact_img} alt="Contact Image" className='w-full max-w-[480px]' data-aos="fade-right" data-aos-duration="800" />
+          <div className="flex flex-col justify-center items-start gap-6" data-aos="fade-left" data-aos-duration="800">
             <p className='font-semibold text-xl text-gray-600'>Our Store</p>
             <p className='text-gray-500'>5455 William Station <br /> Cincinnati, Ohio.</p>
             <p className='text-gray-500'>Tel: (425) 548-4568 <br />Email:bbshop@gmail.com</p>
@@ -20,7 +21,8 @@ function Contact() {
             <button className='btn'>Explore Jobs</button>
           </div>
         </div>
-        <NewsLetter/>
+        <NewsLetter data-aos="fade-down"
+        data-aos-duration="800"/>
     </div>
   )
 }

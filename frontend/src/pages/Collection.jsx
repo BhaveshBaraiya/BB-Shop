@@ -71,8 +71,8 @@ function Collection() {
     }, [sortType]);
 
     return (
-    <div className='flex flex-col sm:flex-row gap-1 sm:gap-10 border-t pt-8'>
-        <div className="min-w-60">
+    <div className='flex flex-col mt-40 sm:flex-row gap-1 sm:gap-10 border-t pt-8'>
+        <div className="min-w-60" data-aos="fade-right" data-aos-duration="800">
             <p className="my-2 text-xl flex items-center cursor-pointer gap-2" onClick={() => setShowFilter(!showFilter)}>FILTERS
                 <img src={assets.dropdown_icon} alt="filters" className={`h-3 sm:hidden ${showFilter? 'rotate-90' : ''}`} />
             </p>
@@ -106,16 +106,16 @@ function Collection() {
             </div>
         </div>
 
-        <div className="flex-1">
+        <div className="flex-1" data-aos="fade-left" data-aos-duration="800">
             <div className="flex justify-between text-base sm:text-2xl mb-4">
-                <Title text1={'ALL'} text2={'COLLECTIONS'}/>
+                <Title text1={'ALL'} text2={'COLLECTIONS'} data-aos="fade-down" data-aos-duration="800"/>
                 <select className="border-2 border-gray-300 text-sm px-2" onChange={(e) => setSortType(e.target.value)}>
                     <option value="relavent">Sort by: Relavent</option>
                     <option value="low-high">Sort by: Low to Hight</option>
                     <option value="high-low">Sort by: High to Low</option>
                 </select>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 gap-y-6/">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 gap-y-6/" data-aos="fade-down" data-aos-duration="800">
                 {filterProducts.map((product) => (
                     <ProductItem key={product._id} id={product._id} name={product.name} price={product.price} image={product.image}/>
                 ))}

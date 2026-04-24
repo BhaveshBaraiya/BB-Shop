@@ -26,7 +26,7 @@ function Product() {
   }, [productId, products]);
 
   return product ?  (
-    <div className='border-t pt-10 transition-opacity ease-in duration-500 opacity-100'>
+    <div className='border-t pt-10 transition-opacity ease-in duration-500 mt-42 opacity-100'>
       <div className="flex gap sm:gap-12 flex-col sm:flex-row">
         <div className="flex-1 flex flex-col-reverse gap-3 sm:flex-row">
           <div className="flex flex-col overflow-x-auto justify-between overflow-y-scroll sm:justify-normal w-full sm:w-[18.7%]">

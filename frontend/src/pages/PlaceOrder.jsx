@@ -133,8 +133,8 @@ function PlaceOrder() {
   const {products, currency, delivery_fee, cartItems, getCartCount, updateQuantity, getCartAmount, navigate, backendUrl, token, setToken, setCartItems } = useShop();
 
   return (
-    <form onSubmit={handleSubmit} className='flex flex-col sm:flex-row justify-between gap-4 pt-5 sm:pt-14 min-h-[80vh] border-t'>
-      <div className="flex flex-col gap-4 w-full sm:max-w-[480px]">
+    <form onSubmit={handleSubmit} className='flex mt-42 flex-col sm:flex-row justify-between gap-4 pt-5 sm:pt-14 min-h-[80vh] border-t' data-aos="fade-down" data-aos-duration="800">
+      <div className="flex flex-col gap-4 w-full sm:max-w-[480px]" data-aos="fade-right" data-aos-duration="800">
         <div className="text-xl sm:text-2xl my-3">
           <Title text1={'DELIVERY'} text2={'INFORMATION'} />
         </div>
@@ -155,7 +155,7 @@ function PlaceOrder() {
         <input required type="number" placeholder='Phone' onChange={onChangeHandler} name='phone' value={formData.phone} className='border border-gray-300 rounded py-1.5 px-3.5 w-full' /> 
       </div>
 
-      <div className="mt-8">
+      <div className="mt-8" data-aos="fade-left" data-aos-duration="800">
         <div className="mt-8 min-w-80">
           <CartTotal/>
         </div>
