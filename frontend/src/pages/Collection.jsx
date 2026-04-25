@@ -29,22 +29,32 @@ function Collection() {
     } 
 
     const applyFilter = () => {
-        let productsCopy = products.slice();
+    let productsCopy = products.slice();
 
-        if(showSearch && search) {
-            productsCopy=productsCopy.filter(item => item.name.toLowerCase().includes(search.toLowerCase()))
-        }
-
-        if(category.length > 0) {
-            productsCopy = productsCopy.filter(item => category.includes(item.category))
-        }
-
-        if(subCategory.length > 0) {
-            productsCopy = productsCopy.filter(item => subCategory.includes(item.subCategory));
-        }
-
-        setFilterProducts(productsCopy);
+    if (showSearch && search) {
+        productsCopy = productsCopy.filter(item =>
+            item.name.toLowerCase().includes(search.toLowerCase())
+        );
     }
+
+    if (category.length > 0) {
+        const normalizedCategory = category.map(c => c.toLowerCase());
+
+        productsCopy = productsCopy.filter(item =>
+            normalizedCategory.includes((item.category || "").toLowerCase())
+        );
+    }
+    
+    if (subCategory.length > 0) {
+        const normalizedSubCategory = subCategory.map(sc => sc.toLowerCase());
+
+        productsCopy = productsCopy.filter(item =>
+            normalizedSubCategory.includes((item.subCategory || "").toLowerCase())
+        );
+    }
+
+    setFilterProducts(productsCopy);
+}
 
     const sortProduct = () => {
      let filteredProductsCopy = filterProducts.slice(); 
