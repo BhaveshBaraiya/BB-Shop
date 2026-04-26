@@ -12,32 +12,44 @@ function Login() {
   const [email, setEmail] = useState("")
   const navigate = useNavigate();
 
-  const handleSubmit = async(e) =>  {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // 1. Email Validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return toast.error("Please enter a valid email address");
+    }
+
+    // 2. Password Length Validation
+    if (password.length < 6) {
+      return toast.error("Password must be at least 6 characters");
+    }
+
     try {
-      if(currentState === 'Sign Up') {
-        const response = await axios.post(backendUrl + '/api/user/register', {email, name, password});
-        console.log(response);
+      if (currentState === 'Sign Up') {
+        const response = await axios.post(backendUrl + '/api/user/register', { email, name, password });
         
-        if(response.data.success) {
-          setToken(response.data.token)
-          localStorage.setItem('token', response.data.token);
+        if (response.data.success) {
+          toast.success("Account created! Please login now.");
+          setCurrentState('Login');
         } else {
           toast.error(response.data.message);
         }
-      } else {
-        const response = await axios.post(backendUrl + '/api/user/login', {email, password});
-        if(response.data.success) {
-          setToken(response.data.token)
+
+      } else {        
+        const response = await axios.post(backendUrl + '/api/user/login', { email, password });
+        if (response.data.success) {
+          setToken(response.data.token);
           localStorage.setItem('token', response.data.token);
         } else {
           toast.error(response.data.message);
         }
       }
-    }catch (error) {
+    } catch (error) {
       console.log(error);
       if (error.response && error.response.data.message) {
-        toast.error(error.response.data.message); 
+        toast.error(error.response.data.message);
       } else {
         toast.error("Something went wrong");
       }
@@ -51,7 +63,7 @@ function Login() {
   }, [token])
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center pt-15">
     <form onSubmit={handleSubmit} className='flex flex-col items-center justify-center w-[90%] sm:max-w-96 mt-14 gap-4 text-gray-800'>
       <div className="inline-flex items-center gap-2 mb-2 mt-10">
         <p className='prata-regular text-3xl'>{currentState}</p>
